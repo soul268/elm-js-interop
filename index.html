@@ -3,6 +3,7 @@
 
 <head>
     <title>elm-lang js interop test</title>
+    <script src="jquery-3.1.1.min.js"></script>
 </head>
 
 <body>
@@ -12,7 +13,7 @@
     var app = Elm.ElmJs.embed(document.getElementById("elm-area"));
     </script>
 
-    <script src="jquery-3.1.1.min.js"></script>
+
     <input type="text"/>
     <button>change</button>
     <script>
@@ -21,6 +22,16 @@
       app.ports.change.send(v);
     });
     </script>
+
+    <button>check</button>
+    <script>
+    $('button:last').click(function(){
+      app.ports.check.subscribe(function(val) {
+        alert(val);
+      });
+    });
+    </script>
+
 </body>
 
 </html>
